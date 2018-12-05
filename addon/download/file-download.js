@@ -3,12 +3,13 @@ import d from './download';
 import axios from 'axios';
 
 export default EmberObject.extend(d, {
-	downloadFile(type = 'psot', url, condition, responseType, downloadType) {
+	downloadFile(type = 'psot', url, condition, responseType, downloadType, headers) {
 		return axios({
 			method: type,
 			url: url,
 			responseType: responseType,
-			data: condition
+			data: condition,
+			headers: headers
 		}).then(response => {
 			let that = this;
 

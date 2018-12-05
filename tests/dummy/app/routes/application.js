@@ -5,8 +5,10 @@ export default Route.extend({
 	file_operation: service(),
 	actions: {
 		download() {
-			// , { condition : {}, responseType : 'blob', downloadType : 'text/csv' }
-			let instance = this.get('file_operation').download('get', '/api/v1/download/0');
+			let option =
+				{ condition : {}, responseType : 'blob', downloadType : 'text/csv', headers: {'Authorization': 'bearer 5c07b2f593f2b80001fd021c'}},
+				instance = null;
+			instance = this.get('file_operation').download('post', '/api/v1/download/0');
 
 			instance.then(func => {
 				func()
