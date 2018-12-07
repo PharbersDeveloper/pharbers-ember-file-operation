@@ -8,7 +8,7 @@ export default Route.extend({
 			let option =
 				{ condition : {}, responseType : 'blob', downloadType : 'text/csv', headers: {'Authorization': 'bearer 5c07b2f593f2b80001fd021c'}},
 				instance = null;
-			instance = this.get('file_operation').download('post', '/api/v1/download/0');
+			instance = this.get('file_operation').download('post', '/api/v1/downloadStudentReport/0', option);
 
 			instance.then(func => {
 				func()

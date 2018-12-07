@@ -1,8 +1,9 @@
 import EmberObject from '@ember/object';
-import d from './download';
 import axios from 'axios';
+import { version } from 'pharbers-ember-util-package/browser';
+import hash from 'pharbers-ember-util-package/hash';
 
-export default EmberObject.extend(d, {
+export default EmberObject.extend({
 	downloadFile(type = 'psot', url, condition, responseType, downloadType, headers) {
 		return axios({
 			method: type,
@@ -11,10 +12,8 @@ export default EmberObject.extend(d, {
 			data: condition,
 			headers: headers
 		}).then(response => {
-			let that = this;
-
-			return function (fileName = that.guid() + '.csv') {
-				const bs = that.getBrowserSys(), blob = new Blob([response.data], { type: downloadType });
+			return function (fileName = hash.create().uuid() + '.csv') {
+				const bs = version(), blob = new Blob([response.data], { type: downloadType });
 
 				if (bs.ie || bs.edge) {
 					navigator.msSaveBlob(blob, fileName);

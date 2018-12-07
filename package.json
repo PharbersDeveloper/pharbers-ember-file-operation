@@ -21,6 +21,7 @@
 		"axios": "^0.18.0",
 		"ember-auto-import": "^1.2.13",
 		"ember-cli-htmlbars": "^2.0.1",
+		"pharbers-ember-util-package": "latest",
 		"ember-cli-babel": "^6.6.0"
 	},
 	"devDependencies": {
